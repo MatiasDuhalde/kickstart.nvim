@@ -9,7 +9,10 @@ return {
     'MunifTanjim/nui.nvim',
     '3rd/image.nvim',
   },
-  config = function()
-    require('neo-tree').setup {}
-  end,
+  opts = {
+    source_selector = {
+      winbar = true,
+      statusline = false,
+    },
+  },
 }
