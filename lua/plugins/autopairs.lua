@@ -3,4 +3,5 @@ return {
   -- Optional dependency
   event = 'InsertEnter',
   config = true,
+  opts = {},
 }
