@@ -57,7 +57,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
           gs.next_hunk()
         end)
         return '<Ignore>'
-      end, { expr = true })
+      end, { expr = true, desc = 'Go to next hunk' })
 
       map('n', '[c', function()
         if vim.wo.diff then
@@ -67,33 +67,33 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
           gs.prev_hunk()
         end)
         return '<Ignore>'
-      end, { expr = true })
+      end, { expr = true, desc = 'Go to previous hunk' })
 
       -- Actions
-      map('n', '<leader>hs', gs.stage_hunk)
-      map('n', '<leader>hr', gs.reset_hunk)
+      map('n', '<leader>hs', gs.stage_hunk, { desc = '[S]tage [H]unk' })
+      map('n', '<leader>hr', gs.reset_hunk, { desc = '[R]eset [H]unk' })
       map('v', '<leader>hs', function()
         gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end)
+      end, { desc = '[S]tage [H]unk' })
       map('v', '<leader>hr', function()
         gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end)
-      map('n', '<leader>hS', gs.stage_buffer)
-      map('n', '<leader>hu', gs.undo_stage_hunk)
-      map('n', '<leader>hR', gs.reset_buffer)
-      map('n', '<leader>hp', gs.preview_hunk)
+      end, { desc = '[R]eset [H]unk' })
+      map('n', '<leader>hS', gs.stage_buffer, { desc = '[S]tage buffer' })
+      map('n', '<leader>hu', gs.undo_stage_hunk, { desc = '[U]ndo stage [H]unk' })
+      map('n', '<leader>hR', gs.reset_buffer, { desc = '[R]eset buffer' })
+      map('n', '<leader>hp', gs.preview_hunk, { desc = '[P]review [H]unk' })
       map('n', '<leader>hb', function()
         gs.blame_line { full = true }
-      end)
-      map('n', '<leader>tb', gs.toggle_current_line_blame)
-      map('n', '<leader>hd', gs.diffthis)
+      end, { desc = '[B]lame line' })
+      map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = '[T]oggle current line [B]lame' })
+      map('n', '<leader>hd', gs.diffthis, { desc = '[D]iff this' })
       map('n', '<leader>hD', function()
         gs.diffthis '~'
-      end)
-      map('n', '<leader>td', gs.toggle_deleted)
+      end, { desc = '[D]iff this (previous)' })
+      map('n', '<leader>td', gs.toggle_deleted, { desc = '[T]oggle [D]eleted' })
 
       -- Text object
-      map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+      map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select [H]unk' })
     end,
   },
 }
