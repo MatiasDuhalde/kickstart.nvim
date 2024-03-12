@@ -19,7 +19,6 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'plugins.base.autopairs',
   require 'plugins.base.cmp',
   require 'plugins.base.comment',
   require 'plugins.base.conform',
@@ -28,7 +27,6 @@ require('lazy').setup({
   require 'plugins.base.indent_line',
   require 'plugins.base.lspconfig',
   require 'plugins.base.mini',
-  require 'plugins.base.neo-tree',
   require 'plugins.base.sleuth',
   require 'plugins.base.telescope',
   require 'plugins.base.todo-comments',
