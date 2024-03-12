@@ -54,6 +54,9 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
+
+-- Add a vertical ruler as a guide for max line width
+vim.opt.colorcolumn = '80,100'
 
 -- vim: ts=2 sts=2 sw=2 et
