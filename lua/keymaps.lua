@@ -42,6 +42,30 @@ vim.keymap.set('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 vim.keymap.set('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = 'Move visual selection down' })
 vim.keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move visual selection up' })
 
+-- Keep the cursor in the middle in half page jumps
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
+-- Preserve buffer after putting over selection
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Preserve buffer [P]ut' })
+
+-- Preserve buffer after deleting
+vim.keymap.set('n', '<leader>d', '"_d', { desc = 'Preserve buffer [D]elete' })
+vim.keymap.set('v', '<leader>d', '"_d', { desc = 'Preserve buffer [D]elete' })
+
+-- Yank into system clipboard
+vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank into system clipboard' })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y]ank into system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = '[Y]ank into system clipboard' })
+
+-- Replace template
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Format
+vim.keymap.set('n', '<leader>f', function()
+  vim.lsp.buf.format()
+end)
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
