@@ -5,8 +5,8 @@ return {
     build = ':Copilot auth',
     opts = {
       panel = {
-        enabled = false,
-        auto_refresh = false,
+        enabled = true,
+        auto_refresh = true,
         keymap = {
           jump_prev = '[[',
           jump_next = ']]',
@@ -16,8 +16,8 @@ return {
         },
       },
       suggestion = {
-        enabled = false,
-        auto_trigger = false,
+        enabled = true,
+        auto_trigger = true,
         debounce = 75,
         keymap = {
           accept = '<M-l>',
@@ -44,32 +44,24 @@ return {
     },
   },
   -- {
-  --   'nvim-cmp',
-  --   dependencies = {
-  --     {
-  --       'zbirenbaum/copilot-cmp',
-  --       dependencies = 'copilot.lua',
-  --       opts = {},
-  --       config = function(_, opts)
-  --         local copilot_cmp = require 'copilot_cmp'
-  --         copilot_cmp.setup(opts)
-  --         -- attach cmp source whenever copilot attaches
-  --         -- fixes lazy-loading issues with the copilot cmp source
-  --         require('lazyvim.util').lsp.on_attach(function(client)
-  --           if client.name == 'copilot' then
-  --             copilot_cmp._on_insert_enter {}
-  --           end
-  --         end)
-  --       end,
-  --     },
-  --   },
-  --   ---@param opts cmp.ConfigSchema
-  --   opts = function(_, opts)
-  --     table.insert(opts.sources, 1, {
+  --   'zbirenbaum/copilot-cmp',
+  --   dependencies = { 'zbirenbaum/copilot.lua', 'onsails/lspkind-nvim' },
+  --   config = function()
+  --     require('copilot_cmp').setup()
+  --
+  --     local cmp_config = require('cmp').get_config()
+  --     table.insert(cmp_config.sources, 1, {
   --       name = 'copilot',
-  --       group_index = 1,
-  --       priority = 100,
   --     })
+  --     table.insert(cmp_config.sorting.comparators, 1, require('copilot_cmp.comparators').prioritize)
+  --     cmp.setup(cmp_config)
+  --     local lspkind = require 'lspkind'
+  --     lspkind.init {
+  --       symbol_map = {
+  --         Copilot = '',
+  --       },
+  --     }
+  --     vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
   --   end,
   -- },
 }
