@@ -59,4 +59,11 @@ vim.opt.scrolloff = 8
 -- Add a vertical ruler as a guide for max line width
 vim.opt.colorcolumn = '80,100'
 
+-- Spell check
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+
+-- Text wrapping
+vim.opt.wrap = false
+
 -- vim: ts=2 sts=2 sw=2 et

@@ -62,9 +62,7 @@ vim.keymap.set('n', '<leader>Y', '"+Y', { desc = '[Y]ank into system clipboard' 
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Format
-vim.keymap.set('n', '<leader>f', function()
-  vim.lsp.buf.format()
-end)
+vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = '[F]ormat' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
