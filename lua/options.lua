@@ -60,7 +60,7 @@ vim.opt.scrolloff = 8
 vim.opt.colorcolumn = '80,100'
 
 -- Spell check
-vim.opt.spelllang = 'en_us'
+vim.opt.spelllang = 'en_us,fr'
 vim.opt.spell = true
 
 -- Text wrapping
