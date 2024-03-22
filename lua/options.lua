@@ -56,6 +56,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
 
+-- Horizontal scrolling
+vim.opt.sidescrolloff = 5
+
 -- Add a vertical ruler as a guide for max line width
 vim.opt.colorcolumn = '80,100'
 
