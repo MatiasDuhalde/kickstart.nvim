@@ -61,7 +61,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'kickstart.plugins.extra.comment',
+  require 'kickstart.plugins.extra.autopairs',
   require 'kickstart.plugins.extra.debug',
   require 'kickstart.plugins.extra.indent_line',
   require 'kickstart.plugins.extra.lint',
