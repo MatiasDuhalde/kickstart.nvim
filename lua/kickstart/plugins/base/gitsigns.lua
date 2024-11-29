@@ -14,8 +14,8 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       changedelete = { text = '~' },
     },
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl = true,      -- Toggle with `:Gitsigns toggle_numhl`
-    linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
+    numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+    linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
     auto_attach = true,
     attach_to_untracked = false,
@@ -30,7 +30,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
     current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
     sign_priority = 6,
     update_debounce = 100,
-    status_formatter = nil,  -- Use default
+    status_formatter = nil, -- Use default
     max_file_length = 40000, -- Disable if file is longer than this (in lines)
     preview_config = {
       -- Options passed to nvim_open_win
@@ -95,25 +95,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       -- Toggles
       map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[t]oggle git show [b]lame line' })
       map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[t]oggle git show [D]eleted' })
-
-
-      -- Actions
-      map('n', '<leader>gs', gs.stage_hunk, { desc = '[S]tage [H]unk' })
-      map('n', '<leader>gr', gs.reset_hunk, { desc = '[R]eset [H]unk' })
-      map('n', '<leader>gS', gs.stage_buffer, { desc = '[S]tage buffer' })
-      map('n', '<leader>gu', gs.undo_stage_hunk, { desc = '[U]ndo stage [H]unk' })
-      map('n', '<leader>gR', gs.reset_buffer, { desc = '[R]eset buffer' })
-      map('n', '<leader>gp', gs.preview_hunk, { desc = '[P]review [H]unk' })
-      map('n', '<leader>gb', function()
-        gs.blame_line { full = true }
-      end, { desc = '[B]lame line' })
-
-      map('n', '<leader>gd', gs.diffthis, { desc = '[D]iff this' })
-      map('n', '<leader>gD', function()
-        gs.diffthis '~'
-      end, { desc = '[D]iff this (previous)' })
-      map('n', '<leader>gtd', gs.toggle_deleted, { desc = '[T]oggle [D]eleted' })
-
       -- Text object
       map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select [i]nner [h]unk' })
     end,
