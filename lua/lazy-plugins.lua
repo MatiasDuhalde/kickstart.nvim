@@ -5,11 +5,19 @@
 --
 --  You can press `?` in this menu for help. Use `:q` to close the window
 --
---  To update plugins, you can run
+--  To update plugins you can run
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+
+  -- NOTE: Plugins can also be added by using a table,
+  -- with the first argument being the link and the following
+  -- keys can be used to configure plugin behavior/loading/etc.
+  --
+  -- Use `opts = {}` to force a plugin to be loaded.
+  --
+
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- put them in the right spots if you want.
@@ -19,31 +27,60 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'plugins.base.cmp',
-  require 'plugins.base.comment',
-  require 'plugins.base.conform',
-  require 'plugins.base.debug',
-  require 'plugins.base.gitsigns',
-  require 'plugins.base.indent_line',
-  require 'plugins.base.lspconfig',
-  require 'plugins.base.mini',
-  require 'plugins.base.sleuth',
-  require 'plugins.base.telescope',
-  require 'plugins.base.todo-comments',
-  require 'plugins.base.tokionight',
-  require 'plugins.base.treesitter',
-  require 'plugins.base.which-key',
+  require 'kickstart.plugins.base.sleuth',
+  require 'kickstart.plugins.base.gitsigns',
+  require 'kickstart.plugins.base.which-key',
+  require 'kickstart.plugins.base.telescope',
+  {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+  { 'Bilal2453/luvit-meta',   lazy = true },
+  require 'kickstart.plugins.base.lspconfig',
+  require 'kickstart.plugins.base.conform',
+  require 'kickstart.plugins.base.cmp',
+  require 'kickstart.plugins.base.tokyonight',
+  require 'kickstart.plugins.base.todo-comments',
+  require 'kickstart.plugins.base.mini',
+  require 'kickstart.plugins.base.treesitter',
+
+  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
+  -- init.lua. If you want these files, they are in the repository, so you can just download them and
+  -- place them in the correct locations.
+
+  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
+  --
+  --  Here are some example plugins that I've included in the Kickstart repository.
+  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
+  --
+  require 'kickstart.plugins.extra.comment',
+  require 'kickstart.plugins.extra.debug',
+  require 'kickstart.plugins.extra.indent_line',
+  require 'kickstart.plugins.extra.lint',
+  require 'kickstart.plugins.extra.neo-tree',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = 'plugins' },
+  { import = 'custom.plugins' },
+  --
+  -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
+  -- Or use telescope!
+  -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
+  -- you can continue same window with `<space>sr` which resumes last telescope search
 }, {
   ui = {
-    -- If you have a Nerd Font, set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
+    -- If you are using a Nerd Font: set icons to an empty table which will use the
+    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',

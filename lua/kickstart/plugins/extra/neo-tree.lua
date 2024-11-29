@@ -3,9 +3,13 @@ return {
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
     '3rd/image.nvim',
+  },
+  cmd = 'Neotree',
+  keys = {
+    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
     source_selector = {
@@ -50,33 +54,33 @@ return {
           {
             'container',
             content = {
-              { 'name', use_git_status_colors = true, zindex = 10 },
+              { 'name',          use_git_status_colors = true, zindex = 10 },
               {
                 'symlink_target',
                 zindex = 10,
                 highlight = 'NeoTreeSymbolicLinkTarget',
               },
               { 'harpoon_index', zindex = 10 }, --> This is what actually adds the component in where you want it
-              { 'clipboard', zindex = 10 },
-              { 'bufnr', zindex = 10 },
-              { 'modified', zindex = 20, align = 'right' },
-              { 'diagnostics', zindex = 20, align = 'right' },
-              { 'git_status', zindex = 10, align = 'right' },
-              { 'file_size', zindex = 10, align = 'right' },
-              { 'type', zindex = 10, align = 'right' },
-              { 'last_modified', zindex = 10, align = 'right' },
-              { 'created', zindex = 10, align = 'right' },
+              { 'clipboard',     zindex = 10 },
+              { 'bufnr',         zindex = 10 },
+              { 'modified',      zindex = 20,                  align = 'right' },
+              { 'diagnostics',   zindex = 20,                  align = 'right' },
+              { 'git_status',    zindex = 10,                  align = 'right' },
+              { 'file_size',     zindex = 10,                  align = 'right' },
+              { 'type',          zindex = 10,                  align = 'right' },
+              { 'last_modified', zindex = 10,                  align = 'right' },
+              { 'created',       zindex = 10,                  align = 'right' },
             },
           },
         },
       },
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+      },
     },
   },
-  config = function(_, opts)
-    vim.keymap.set('n', '<leader>n', '<Cmd>Neotree toggle<CR>', { desc = '[N]eotree toggle' })
-
-    require('neo-tree').setup(opts)
-  end,
 }
 
 -- vim: ts=2 sts=2 sw=2 et
