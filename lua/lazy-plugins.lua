@@ -31,19 +31,6 @@ require('lazy').setup({
   require 'kickstart.plugins.base.gitsigns',
   require 'kickstart.plugins.base.which-key',
   require 'kickstart.plugins.base.telescope',
-  {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-  { 'Bilal2453/luvit-meta',   lazy = true },
   require 'kickstart.plugins.base.lspconfig',
   require 'kickstart.plugins.base.conform',
   require 'kickstart.plugins.base.cmp',

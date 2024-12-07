@@ -13,7 +13,7 @@
 -- after the plugin has been loaded:
 --  config = function() ... end
 
-return {              -- Useful plugin to show you pending keybinds.
+return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
   opts = {
@@ -56,7 +56,7 @@ return {              -- Useful plugin to show you pending keybinds.
 
     -- Document existing key chains
     spec = {
-      { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
+      { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
       { '<leader>d', group = '[D]ocument' },
       { '<leader>r', group = '[R]ename' },
       { '<leader>s', group = '[S]earch' },
